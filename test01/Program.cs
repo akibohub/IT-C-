@@ -18,9 +18,9 @@ namespace test01
         {
             Random random = new Random();
             var password = string.Empty;
-            for (var i = 0; i < 10; i++)//引数countの値を繰り返しの回数に使用している
+            for (var i = 0; i < count; i++)//引数countの値を繰り返しの回数に使用している
             {
-                password += random.Next(count);
+                password += random.Next(10);
             }
             return password;
         }
