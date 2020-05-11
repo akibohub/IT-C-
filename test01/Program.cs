@@ -10,10 +10,6 @@ namespace test01
     {
         static void Main(string[] args)
         {
-            //System.Console.WriteLine("Hello");
-            //Console.ReadLine();
-            //var message = "welcome to the csharp's world";
-            //Console.WriteLine(message);
             Random random = new Random();
             var password = string.Empty;
             for(var i = 0; i < 10; i++)
