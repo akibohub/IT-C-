@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 /// <summary>
-/// Chapter1-3 英字をランダムに	生成せよ！
+/// Chapter1-4 記号をランダムに	生成せよ！
 /// </summary>
 namespace test01
 {
@@ -13,13 +13,26 @@ namespace test01
         static void Main(string[] args)
         {
             var count = 10;
-            //var password = MakeLowerAlphabet(count);
-            var password = MakeUpperAlphabet(count);
+            var password = MakeMark(count);
             Console.WriteLine(password);
-        }       
-        private static string MakeUpperAlphabet(int count)
+        }     
+        private static string MakeMark(int count)
         {
+            string[] marks = { "!", "#", "$", "%", "&", "@" };
+            Random random = new Random();
+            var password = string.Empty;
+            for(var i = 0; i < count; i++)
+            {
+                var n = random.Next(marks.Length);//Lengthプロパティで配列の要素数を取得できる　今回は6
+                password += marks[n];
+            }
+            return password;
+        }
+        
             //英大文字をランダムに生成するメソッド　文字数は引数countの値に準ずる
+       private static string MakeUpperLetter(int count)
+        {
+            
             Random random = new Random();
             var password = string.Empty;
             for(var i = 0; i < count; i++)
@@ -30,12 +43,13 @@ namespace test01
             }
             return password;
         }
-        private static string MakeLowerAlphabet(int count)
-        {
+       
             //英小文字をランダムに生成するメソッド　文字数は引数countの値に準ずる
+            private static string MakeLowerLetter(int count)
+        {
             Random random = new Random();
-            string password = string.Empty;
-            for (var i = 0; i < count; i++)
+            var password = string.Empty;
+            for(var i = 0; i < count; i++)
             {
                 var n = random.Next(97, 123);
                 var c = (char)n;
@@ -43,16 +57,20 @@ namespace test01
             }
             return password;
         }
+
+
+
+        //数字をランダムに生成するメソッド　文字数は引数countの値に準ずる
         private static string MakePassword(int count)
         {
-            //数字をランダムに生成するメソッド　文字数は引数countの値に準ずる
             Random random = new Random();
             var password = string.Empty;
-            for (var i = 0; i < count; i++)//引数countの値を繰り返しの回数に使用している
+            for(var i = 0; i < count; i++)
             {
                 password += random.Next(10);
             }
             return password;
         }
+       
     }
 }
